@@ -1,0 +1,818 @@
+/* ══════════════════════════════════════════════════════
+   DEMAND ASSISTANT · BRD GENERATOR · REVIEW REDESIGN
+   ══════════════════════════════════════════════════════ */
+
+/* ── Two-column form + assistant layout ─────────────── */
+.cdp-with-panel {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 0 28px 40px;
+}
+.cdp-form-col {
+  flex: 1;
+  min-width: 0;
+}
+.cdp-assistant-col {
+  width: 300px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: sticky;
+  top: 20px;
+}
+
+/* ── Assistant / BRD Panel Card ─────────────────────── */
+.da-panel {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.05);
+}
+.da-panel-hdr {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f3f4f6;
+}
+.da-panel-hdr-ico {
+  width: 32px;
+  height: 32px;
+  background: #f0fdf4;
+  border: 1px solid #d1fae5;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a7a4e;
+  flex-shrink: 0;
+}
+
+/* ── Form Completion row ─────────────────────────────── */
+.da-completion-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.da-comp-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 3px;
+}
+.da-comp-sub {
+  font-size: 11.5px;
+  color: #6b7280;
+  line-height: 1.45;
+}
+
+/* ── Tip box ─────────────────────────────────────────── */
+.da-tip {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 11.5px;
+  color: #92400e;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.da-tip strong { color: #78350f; }
+
+/* ── Missing fields ──────────────────────────────────── */
+.da-missing-lbl {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: #9ca3af;
+  margin-bottom: 8px;
+}
+.da-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 14px;
+}
+.da-pill {
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  color: #0369a1;
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 500;
+}
+.da-pill-more {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  color: #6b7280;
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* ── All fields complete ────────────────────────────── */
+.da-all-done {
+  background: #f0fdf4;
+  border: 1px solid #a7f3d0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #14532d;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+/* ── AI Unlock / Analysis card ───────────────────────── */
+.da-ai-card {
+  background: linear-gradient(145deg, #f0fdf4, #ecfdf5);
+  border: 1px solid #a7f3d0;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+.da-ai-ico {
+  width: 50px;
+  height: 50px;
+  background: #d1fae5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 11px;
+  color: #1a7a4e;
+}
+.da-ai-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 5px;
+}
+.da-ai-desc {
+  font-size: 11.5px;
+  color: #6b7280;
+  margin-bottom: 13px;
+  line-height: 1.5;
+}
+.da-ai-btn {
+  width: 100%;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #1a7a4e, #15643f);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  transition: opacity .2s, transform .1s;
+  letter-spacing: .01em;
+}
+.da-ai-btn:hover:not(:disabled) { opacity: .9; }
+.da-ai-btn:active:not(:disabled) { transform: scale(.98); }
+.da-ai-btn:disabled { opacity: .6; cursor: not-allowed; }
+
+.da-ai-warn {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 7px;
+  padding: 8px 10px;
+  font-size: 11.5px;
+  color: #9a3412;
+  margin-top: 10px;
+  text-align: left;
+  line-height: 1.45;
+}
+.da-ai-success {
+  background: #f0fdf4;
+  border: 1px solid #a7f3d0;
+  border-radius: 7px;
+  padding: 8px 10px;
+  font-size: 11.5px;
+  color: #14532d;
+  margin-top: 10px;
+  text-align: left;
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  line-height: 1.45;
+}
+.da-new-project-warn {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 11.5px;
+  color: #9a3412;
+  margin-top: 10px;
+  line-height: 1.5;
+  text-align: left;
+}
+.da-new-project-warn strong { color: #7c2d12; }
+
+/* ── BRD Generator buttons ───────────────────────────── */
+.da-brd-desc {
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.da-brd-btns {
+  display: flex;
+  gap: 8px;
+}
+.da-btn-preview {
+  flex: 1;
+  padding: 9px 12px;
+  background: #fff;
+  color: #374151;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color .15s, background .15s;
+}
+.da-btn-preview:hover { border-color: #9ca3af; background: #f9fafb; }
+.da-btn-generate {
+  flex: 1;
+  padding: 9px 12px;
+  background: linear-gradient(135deg, #1a7a4e, #15643f);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.da-btn-generate:hover { opacity: .9; }
+
+/* ══════════════════════════════════════════════════════
+   BRD PREVIEW MODAL
+   ══════════════════════════════════════════════════════ */
+.brd-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.52);
+  z-index: 2000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 28px 16px;
+  overflow-y: auto;
+}
+.brd-modal {
+  background: #fff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 760px;
+  box-shadow: 0 24px 64px rgba(0,0,0,.3);
+  overflow: hidden;
+  position: relative;
+}
+.brd-modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 22px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+  gap: 12px;
+}
+.brd-modal-head-l {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.brd-modal-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+}
+.brd-modal-sub {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-top: 1px;
+}
+.brd-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.brd-close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  line-height: 1;
+}
+.brd-close-btn:hover { background: #f3f4f6; color: #374151; }
+.brd-body {
+  padding: 28px 32px;
+  overflow-y: auto;
+  max-height: calc(100vh - 200px);
+}
+.brd-doc-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1a7a4e;
+  margin-bottom: 5px;
+}
+.brd-doc-meta {
+  font-size: 11.5px;
+  color: #9ca3af;
+  margin-bottom: 5px;
+}
+.brd-doc-demand {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+  padding-bottom: 18px;
+  border-bottom: 2px solid #e5e7eb;
+  margin-bottom: 22px;
+}
+.brd-section {
+  margin-bottom: 16px;
+  padding: 14px 16px;
+  background: #f9fafb;
+  border-radius: 10px;
+  border-left: 3px solid #1a7a4e;
+}
+.brd-section-title {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: #1a7a4e;
+  margin-bottom: 7px;
+}
+.brd-section-body {
+  font-size: 12.5px;
+  color: #374151;
+  line-height: 1.65;
+  white-space: pre-wrap;
+}
+.brd-section-empty {
+  color: #d1d5db !important;
+  font-style: italic;
+}
+
+/* ══════════════════════════════════════════════════════
+   DEMAND REVIEW PAGE — REDESIGN
+   ══════════════════════════════════════════════════════ */
+
+/* Demand Summary card (left panel) */
+.drp-summary-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 16px;
+}
+.drp-summary-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.drp-summary-text {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 13px 15px;
+  font-size: 13px;
+  color: #374151;
+  line-height: 1.7;
+}
+.drp-details-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1a7a4e;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 11px;
+  text-decoration: none;
+}
+.drp-details-toggle:hover { text-decoration: underline; }
+
+/* Accordion sections (right panel) */
+.drp-accordion {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.drp-accordion-hdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 18px;
+  cursor: pointer;
+  user-select: none;
+  background: #fff;
+  transition: background .15s;
+}
+.drp-accordion-hdr:hover { background: #fafafa; }
+.drp-accordion-hdr-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.drp-accordion-chevron {
+  color: #9ca3af;
+  transition: transform .2s;
+  flex-shrink: 0;
+}
+.drp-accordion-chevron.open { transform: rotate(180deg); }
+.drp-accordion-body {
+  padding: 0 18px 18px;
+  border-top: 1px solid #f3f4f6;
+}
+.drp-acc-demand-summary-lbl {
+  font-size: 12px;
+  font-weight: 700;
+  color: #374151;
+  margin: 14px 0 8px;
+}
+.drp-acc-summary-box {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 11px 14px;
+  font-size: 12.5px;
+  color: #374151;
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+.drp-acc-comments-lbl {
+  font-size: 12px;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 7px;
+}
+.drp-acc-btns {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  justify-content: flex-end;
+}
+
+/* ══════════════════════════════════════════════════════
+   PER-FIELD AI SUGGESTION BOX
+   ══════════════════════════════════════════════════════ */
+.ai-suggestion-box {
+  margin-top: 6px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 12px;
+}
+.ai-suggestion-hdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.ai-suggestion-lbl {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: #1d4ed8;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.ai-apply-btn {
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.ai-apply-btn:hover { background: #f3f4f6; border-color: #9ca3af; }
+.ai-suggestion-text {
+  color: #1e3a8a;
+  font-size: 11.5px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+/* ── Workspace card size reduction ───────────────────── */
+.wsp-card { padding: 13px 14px 10px !important; }
+.wsp-card-num { font-size: 26px !important; }
+.wsp-card-ico { width: 32px !important; height: 32px !important; }
+.wsp-card-top { margin-bottom: 7px !important; }
+
+/* ── Compact review/create page header ──────────────── */
+.drp-page .cdp-header {
+  padding: 10px 24px !important;
+  align-items: center !important;
+  min-height: 56px;
+}
+.drp-page .cdp-badge {
+  margin-bottom: 3px !important;
+}
+.drp-page .cdp-title {
+  font-size: 15px !important;
+  margin-bottom: 0 !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 480px;
+}
+.drp-page .cdp-sub {
+  font-size: 11px !important;
+  margin-top: 1px;
+}
+.drp-page .cdp-back-btn {
+  margin-top: 0 !important;
+}
+.drp-edit-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  background: #fff;
+  border: 1.5px solid #1a7a4e;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1a7a4e;
+  cursor: pointer;
+  transition: background .15s;
+  font-family: var(--ez-font-body);
+  flex-shrink: 0;
+}
+.drp-edit-btn:hover { background: #f0fdf4; }
+
+/* ── Innovative stepper section nav ─────────────────── */
+.cdp-stepper {
+  display: flex;
+  align-items: center;
+  padding: 14px 28px 0;
+  gap: 0;
+  margin-bottom: 4px;
+  background: rgba(255,255,255,.45);
+  border-bottom: 1px solid var(--ez-border);
+}
+.cdp-step-btn {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px 14px 16px;
+  border-radius: 0;
+  transition: background .15s;
+  text-align: left;
+  font-family: var(--ez-font-body);
+  border-bottom: 3px solid transparent;
+  margin-bottom: -1px;
+}
+.cdp-step-btn:hover { background: rgba(255,255,255,.6); }
+.cdp-step-btn.active {
+  border-bottom-color: #1a7a4e;
+}
+.cdp-step-circle {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 2px solid #d1d5db;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 800;
+  color: #9ca3af;
+  background: #fff;
+  flex-shrink: 0;
+  transition: all .2s;
+}
+.cdp-step-btn.active .cdp-step-circle {
+  border-color: #1a7a4e;
+  color: #1a7a4e;
+  background: #f0fdf4;
+}
+.cdp-step-btn.done .cdp-step-circle {
+  border-color: #22c55e;
+  background: #22c55e;
+  color: #fff;
+}
+.cdp-step-text { display: flex; flex-direction: column; }
+.cdp-step-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #6b7280;
+}
+.cdp-step-btn.active .cdp-step-label { color: #1a7a4e; }
+.cdp-step-btn.done .cdp-step-label { color: #374151; }
+.cdp-step-hint {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-top: 1px;
+}
+.cdp-step-connector {
+  flex: 1;
+  height: 2px;
+  background: #e5e7eb;
+  min-width: 24px;
+  margin: 0 0 16px;
+}
+.cdp-step-connector.done { background: #22c55e; }
+.cdp-step-connector.active { background: #1a7a4e; }
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 920px) {
+  .cdp-with-panel {
+    flex-direction: column;
+    padding: 0 16px 32px;
+  }
+  .cdp-assistant-col {
+    width: 100%;
+    position: static;
+    max-height: none;
+  }
+}
+
+/* ── Header hamburger button (mobile only) ───────────── */
+.hdr-menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--ez-border);
+  background: rgba(255,255,255,.7);
+  border-radius: 9px;
+  cursor: pointer;
+  color: var(--ez-text-muted);
+  flex-shrink: 0;
+}
+.hdr-menu-btn:hover { background: #fff; color: var(--ez-text); }
+@media (max-width: 640px) {
+  .hdr-menu-btn { display: flex; }
+}
+
+/* ── Mobile sidebar overlay backdrop ────────────────── */
+.sb-mobile-overlay {
+  display: none;
+}
+@media (max-width: 640px) {
+  .sb-mobile-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 250;
+    backdrop-filter: blur(2px);
+  }
+}
+
+/* ── Login page responsive ───────────────────────────── */
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: 100vh;
+  }
+  .login-left {
+    display: none !important;
+  }
+  .login-right {
+    width: 100% !important;
+    padding: 40px 24px !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    border-left: none !important;
+  }
+  .login-form-card {
+    max-width: 420px !important;
+    width: 100% !important;
+    padding: 28px 22px !important;
+  }
+  .login-demo-cards {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .login-demo-card {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-right {
+    padding: 28px 16px !important;
+  }
+  .login-form-card {
+    padding: 22px 16px !important;
+  }
+}
+
+/* Mobile action bar — hidden on desktop */
+.cdp-mobile-actions { display: none; }
+
+/* ── Mobile header improvements ─────────────────────── */
+@media (max-width: 640px) {
+  /* Hide user name/title text in header — keep avatar only */
+  .hdr-user-info { display: none !important; }
+  .hdr-user-chip { gap: 0 !important; padding: 4px !important; background: transparent !important; border: none !important; }
+
+  /* Create/Review page headers: compact on mobile */
+  .cdp-header {
+    padding: 10px 12px !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    align-items: center !important;
+  }
+  .cdp-header-content {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+  .cdp-title {
+    font-size: 16px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .cdp-sub { display: none !important; }
+  /* Header actions — hide on mobile (shown in sticky bottom bar instead) */
+  .cdp-header-actions { display: none !important; }
+
+  /* Fixed mobile action bar at bottom */
+  .cdp-mobile-actions {
+    display: flex !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    gap: 10px;
+    padding: 12px 16px;
+    background: rgba(255,255,255,.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--ez-border);
+    box-shadow: 0 -4px 16px rgba(0,0,0,.08);
+  }
+  .cdp-mobile-actions .cdp-btn-save { flex: 1; }
+  .cdp-mobile-actions .cdp-btn-submit { flex: 2; }
+  /* Push form content above the fixed bar */
+  .cdp-page { padding-bottom: 80px; }
+
+  /* Stepper: compact on mobile */
+  .cdp-stepper { padding: 10px 12px 0 !important; }
+  .cdp-step-btn { padding: 8px 10px 14px !important; gap: 8px !important; }
+  .cdp-step-hint { display: none !important; }
+  .cdp-step-circle { width: 30px !important; height: 30px !important; font-size: 11px !important; }
+
+  /* Review page: compact header */
+  .drp-page .cdp-header { min-height: 50px !important; }
+  .drp-page .cdp-title { font-size: 13px !important; max-width: 160px !important; }
+  .drp-page .cdp-sub { display: none !important; }
+  .drp-edit-btn { padding: 5px 10px !important; font-size: 11px !important; }
+
+  /* Two-column form: single column */
+  .cdp-with-panel { padding: 0 12px 40px !important; }
+
+  /* Demand review layout */
+  .drp-layout { gap: 14px !important; }
+}

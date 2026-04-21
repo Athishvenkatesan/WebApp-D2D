@@ -1,0 +1,26 @@
+[
+  {
+    "username": "sara.hashimi",
+    "password": "DEWA@2025",
+    "name": "Sara Al Hashimi",
+    "role": "initiator",
+    "initials": "SH",
+    "title": "Business Analyst · DEWA"
+  },
+  {
+    "username": "mohammed.ketbi",
+    "password": "DEWA@2025",
+    "name": "Mohammed Al Ketbi",
+    "role": "reviewer",
+    "initials": "MK",
+    "title": "IT Review Lead · DEWA"
+  },
+  {
+    "username": "rashid.maktoum",
+    "password": "DEWA@2025",
+    "name": "Rashid Al Maktoum",
+    "role": "approver",
+    "initials": "RM",
+    "title": "IT Director · DEWA"
+  }
+]
