@@ -253,55 +253,60 @@ export default function HomePage({ onTabChange, showToast, openStepIndex, setOpe
 
       {/* ── HOW IT WORKS ── */}
       <div className="hiw-section">
-        <div className="hiw-deco" />
         <div className="hiw-head">
           <div className="hiw-eyebrow">The Journey</div>
           <div className="hiw-title">How It Works</div>
           <div className="hiw-desc">
-            Click any step to see detailed information. A simple, streamlined 5-stage process takes your demand from submission to delivered solution.
+            A streamlined 5-stage process that takes your demand from submission to delivered solution.
           </div>
         </div>
 
-        <div className="hiw-steps-wrap">
-          <div className="hiw-line">
-            <div ref={lineFillRef} className="hiw-line-fill" style={{ width: '100%' }} />
-          </div>
-          <div className="hiw-steps">
-            {STEP_DATA.map((step, idx) => (
+        <div className="hiw-timeline">
+          {STEP_DATA.map((step, idx) => (
+            <div
+              key={idx}
+              className={`timeline-item${openStepIndex === idx ? ' expanded' : ''}${idx < 2 ? ' completed' : ''}`}
+            >
+              <div className="timeline-marker">
+                <div className="marker-circle">
+                  <div className="marker-num">{idx + 1}</div>
+                </div>
+                <div className="marker-line" />
+              </div>
+
               <div
-                key={idx}
-                className={`hiw-step${idx < 2 ? ' done' : ''}${openStepIndex === idx ? ' active-step' : ''}`}
+                className="timeline-card"
                 onClick={() => setOpenStepIndex(openStepIndex === idx ? null : idx)}
               >
-                <div className="hiw-step-circle">
-                  <div className="hiw-step-n">{idx + 1}</div>
-                  {step.icon}
+                <div className="card-header">
+                  <div className="card-icon-box">{step.icon}</div>
+                  <div className="card-title-group">
+                    <div className="card-title">{step.title}</div>
+                    <div className="card-subtitle">{step.desc}</div>
+                  </div>
+                  <div className="card-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                  </div>
                 </div>
-                <div className="hiw-step-title">{step.title}</div>
-                <div className="hiw-step-desc">{step.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
 
-        {/* Step detail panel */}
-        {currentStep && (
-          <div className="step-detail">
-            <div className="step-detail-inner">
-              <div className="sd-icon">{currentStep.icon}</div>
-              <div className="sd-content">
-                <div className="sd-title">{currentStep.title}</div>
-                <div className="sd-text">{currentStep.detailText}</div>
-                <div className="sd-tags">
-                  {currentStep.tags.map((tag) => (
-                    <span key={tag} className="sd-tag">{tag}</span>
-                  ))}
-                </div>
+                {openStepIndex === idx && (
+                  <div className="card-expanded">
+                    <div className="expanded-content">
+                      <p className="expanded-text">{step.detailText}</p>
+                      <div className="expanded-tags">
+                        {step.tags.map((tag) => (
+                          <span key={tag} className="tag">{tag}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
-            <button className="sd-close" onClick={() => setOpenStepIndex(null)}>✕ Close</button>
-          </div>
-        )}
+          ))}
+        </div>
       </div>
     </>
   );
