@@ -1336,14 +1336,17 @@ tbody tr:hover .row-actions { opacity: 1; }
 
 .inbox-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
 .inbox-card {
-  background: var(--ez-bg-glass);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255,255,255,.65);
+  background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.04));
+  backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255,255,255,.5);
   border-radius: var(--ez-r);
   padding: 20px;
   cursor: pointer;
   transition: var(--ez-tr);
-  box-shadow: var(--ez-sh-sm);
+  box-shadow:
+    0 8px 32px rgba(0,0,0,.15),
+    inset 0 1px 1px rgba(255,255,255,.3),
+    inset -1px -1px 1px rgba(0,0,0,.1);
   position: relative;
   overflow: hidden;
 }
@@ -1358,17 +1361,38 @@ tbody tr:hover .row-actions { opacity: 1; }
   opacity: 0;
   transition: var(--ez-tr);
 }
-.inbox-card:hover { transform: translateY(-4px); box-shadow: var(--ez-sh-lg); border-color: rgba(26,122,78,.22); }
+.inbox-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255,255,255,.4), transparent, rgba(255,255,255,.1));
+  opacity: 0;
+  transition: var(--ez-tr);
+  pointer-events: none;
+}
+.inbox-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 16px 48px rgba(0,0,0,.25),
+    inset 0 1px 1px rgba(255,255,255,.4),
+    inset -1px -1px 1px rgba(0,0,0,.15);
+  border-color: rgba(26,122,78,.3);
+  background: linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.06));
+}
 .inbox-card:hover::before { opacity: 1; }
+.inbox-card:hover::after { opacity: 1; }
 .inbox-card.removing { opacity: 0; transform: scale(.92); pointer-events: none; }
 
-.ic-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 9px; }
-.ic-no { font-size: 11.5px; font-weight: 700; color: var(--ez-accent-mid); letter-spacing: .3px; font-family: var(--ez-font-mono); }
-.ic-title { font-size: 14px; font-weight: 700; color: var(--ez-text); margin-bottom: 14px; line-height: 1.45; font-family: var(--ez-font-heading); }
-.ic-meta-row { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
-.ic-meta { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ez-text-muted); font-weight: 500; }
+.ic-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 9px; position: relative; z-index: 1; }
+.ic-no { font-size: 11.5px; font-weight: 700; color: var(--ez-accent-mid); letter-spacing: .3px; font-family: var(--ez-font-mono); text-shadow: 0 1px 2px rgba(0,0,0,.1); }
+.ic-title { font-size: 14px; font-weight: 700; color: var(--ez-text); margin-bottom: 14px; line-height: 1.45; font-family: var(--ez-font-heading); text-shadow: 0 1px 2px rgba(0,0,0,.08); }
+.ic-meta-row { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; position: relative; z-index: 1; }
+.ic-meta { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ez-text-muted); font-weight: 500; text-shadow: 0 1px 1px rgba(0,0,0,.05); }
 .ic-meta svg { width: 12px; height: 12px; flex-shrink: 0; }
-.ic-actions { display: flex; gap: 7px; padding-top: 13px; border-top: 1px solid var(--ez-border); }
+.ic-actions { display: flex; gap: 7px; padding-top: 13px; border-top: 1px solid rgba(255,255,255,.2); position: relative; z-index: 1; }
 
 .btn-approve {
   flex: 1;
@@ -1416,12 +1440,16 @@ tbody tr:hover .row-actions { opacity: 1; }
 .btn-reject:hover { background: rgba(239,68,68,.14); }
 
 .inbox-list {
-  background: var(--ez-bg-glass);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255,255,255,.65);
+  background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.04));
+  backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255,255,255,.5);
   border-radius: var(--ez-r);
   overflow: hidden;
-  box-shadow: var(--ez-sh-sm);
+  box-shadow:
+    0 8px 32px rgba(0,0,0,.15),
+    inset 0 1px 1px rgba(255,255,255,.3),
+    inset -1px -1px 1px rgba(0,0,0,.1);
+  position: relative;
 }
 
 /* ─────────────────────────────────────────
@@ -1876,12 +1904,15 @@ tbody tr:hover .row-actions { opacity: 1; }
 .ic-return-comment {
   font-size: 11.5px;
   color: #991b1b;
-  background: #fee2e2;
-  border: 1px solid #fca5a5;
+  background: rgba(254, 226, 226, .85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(252, 165, 165, .6);
   border-radius: 8px;
   padding: 8px 11px;
   margin-bottom: 10px;
   line-height: 1.5;
+  position: relative;
+  z-index: 1;
 }
 
 /* ═══════════════════════════════════════════════════════════
