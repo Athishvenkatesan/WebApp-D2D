@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(lsof -iTCP -sTCP:LISTEN)",
+      "Bash(netstat -ano)"
+    ]
+  }
+}
